@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{814192FE-B7AF-4582-B2E9-C6A377B3E9CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMeeting.DAL", "EasyMeeting.DAL\EasyMeeting.DAL.csproj", "{EB066994-32EE-440D-8E1D-C220C221BF7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMeeting.DAL", "src\EasyMeeting.DAL\EasyMeeting.DAL.csproj", "{EB066994-32EE-440D-8E1D-C220C221BF7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMeeting.BLL", "EasyMeeting.BLL\EasyMeeting.BLL.csproj", "{610086E5-4A61-4FCC-A149-19A911D7D5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMeeting.BLL", "src\EasyMeeting.BLL\EasyMeeting.BLL.csproj", "{610086E5-4A61-4FCC-A149-19A911D7D5DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMeeting.Common", "EasyMeeting.Common\EasyMeeting.Common.csproj", "{57B2DBF8-EE99-4019-B199-D276788738E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMeeting.Common", "src\EasyMeeting.Common\EasyMeeting.Common.csproj", "{57B2DBF8-EE99-4019-B199-D276788738E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMeeting.WebApp", "EasyMeeting.WebApp\EasyMeeting.WebApp.csproj", "{1FC4651F-A47B-4CBA-B4D4-9E2D6AFEE491}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMeeting.WebApp", "src\EasyMeeting.WebApp\EasyMeeting.WebApp.csproj", "{1FC4651F-A47B-4CBA-B4D4-9E2D6AFEE491}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
