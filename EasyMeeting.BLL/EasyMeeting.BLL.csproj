@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMeeting.Common\EasyMeeting.Common.csproj" />
+    <ProjectReference Include="..\EasyMeeting.DAL\EasyMeeting.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
