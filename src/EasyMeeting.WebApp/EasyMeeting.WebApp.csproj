@@ -16,5 +16,9 @@
     <ProjectReference Include="..\EasyMeeting.Common\EasyMeeting.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 
 </Project>

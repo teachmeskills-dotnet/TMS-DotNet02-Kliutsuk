@@ -6,18 +6,16 @@ namespace EasyMeeting.DAL.Models
     public class Users : IHasDbIdentity
     {
         /// <summary>
-        /// ID Key
+        /// ID Key.
         /// </summary>
         public int Id { get; set; }
-        public string Identity { get; set; }
 
         /// <summary>
-        /// Reference on Meetings
+        /// Identity.
         /// </summary>
+        public string Identity { get; set; }
+
         public List<Meetings> Meetings { get; set; }
-        /// <summary>
-        /// Reference on Profiles
-        /// </summary>
         public List<Profiles> Profiles { get; set; }
     }
 }
