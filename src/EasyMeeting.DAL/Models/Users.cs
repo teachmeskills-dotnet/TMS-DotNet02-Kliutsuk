@@ -11,9 +11,14 @@ namespace EasyMeeting.DAL.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Identity.
+        /// User Email.
         /// </summary>
-        public string Identity { get; set; }
+        public string Email { get; set; }
+
+        /// <summary>
+        /// User password.
+        /// </summary>
+        public string Password { get; set; }
 
         public List<Meetings> Meetings { get; set; }
         public List<Profiles> Profiles { get; set; }
