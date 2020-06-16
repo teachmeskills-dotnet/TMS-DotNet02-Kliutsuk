@@ -1,9 +1,10 @@
 ﻿using EasyMeeting.Common.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
 namespace EasyMeeting.DAL.Models
 {
-    public class Users : IHasDbIdentity
+    public class Users : IdentityUser, IHasDbIdentity 
     {
         /// <summary>
         /// ID Key.

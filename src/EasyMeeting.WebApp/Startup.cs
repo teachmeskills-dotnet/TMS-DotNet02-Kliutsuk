@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using EasyMeeting.BLL.Repository;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL;
+using EasyMeeting.DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +32,9 @@ namespace EasyMeeting.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<EasyMeetingDbContext>();
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnections")));
+            services.AddIdentity<Users, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
+            services.AddControllersWithViews();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
@@ -48,6 +52,7 @@ namespace EasyMeeting.WebApp
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
 
             app.UseRouting();
