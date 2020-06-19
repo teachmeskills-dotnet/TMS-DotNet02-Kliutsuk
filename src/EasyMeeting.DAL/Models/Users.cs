@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace EasyMeeting.DAL.Models
 {
-    public class Users : IdentityUser, IHasDbIdentity 
+    public class Users : IHasDbIdentity 
     {
         /// <summary>
         /// ID Key.
