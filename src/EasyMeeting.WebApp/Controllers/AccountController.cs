@@ -1,4 +1,4 @@
-﻿using EasyMeeting.DAL.Models;
+﻿using EasyMeeting.DAL.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using EasyMeeting.WebApp.ViewModels;
@@ -9,10 +9,10 @@ namespace EasyMeeting.WebApp.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<Users> _userManager;
-        private readonly SignInManager<Users> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AccountController(UserManager<Users> userManager, SignInManager<Users> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -29,16 +29,16 @@ namespace EasyMeeting.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var users = new Users { Email = model.Email, Password = model.Password };
+                var user = new User { Email = model.Email, Password = model.Password };
                 // добавляем пользователя
-                var result = await _userManager.CreateAsync(users, model.Password);
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(users);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
                         "Account",
-                        new { userId = users.Id, code = code },
+                        new { userId = user.Id, code = code },
                         protocol: HttpContext.Request.Scheme);
                     var emailVerification = new EmailVerification();
                     await emailVerification.SendEmailAsync(model.Email, "Confirm your account",

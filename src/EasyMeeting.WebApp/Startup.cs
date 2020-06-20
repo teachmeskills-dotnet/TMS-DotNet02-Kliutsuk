@@ -1,6 +1,7 @@
 using EasyMeeting.BLL.Repository;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL;
+using EasyMeeting.DAL.Identity;
 using EasyMeeting.DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,8 +26,8 @@ namespace EasyMeeting.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnections")));
-            services.AddIdentity<Users, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
+            services.AddDbContext<EasyMeetingDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnections")));
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<EasyMeetingDbContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }

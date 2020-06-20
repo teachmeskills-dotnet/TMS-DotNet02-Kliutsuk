@@ -1,4 +1,6 @@
-﻿using EasyMeeting.DAL.Models;
+﻿using EasyMeeting.DAL.Identity;
+using EasyMeeting.DAL.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,11 +8,12 @@ using System.Text;
 
 namespace EasyMeeting.DAL
 {
-    public class EasyMeetingDbContext : DbContext
+    public class EasyMeetingDbContext : IdentityDbContext<User>
     {
-        public EasyMeetingDbContext()
+        public EasyMeetingDbContext(DbContextOptions<EasyMeetingDbContext> options) : base(options)
         {
         }
+
         public DbSet<Users> Users { get; set; }
         public DbSet<Meetings> Meetings { get; set; }
         public DbSet<Profiles> Profiles { get; set; }
