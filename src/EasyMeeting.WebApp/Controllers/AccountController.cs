@@ -1,9 +1,11 @@
-﻿using EasyMeeting.DAL.Identity;
+﻿using EasyMeeting.Common.Interfaces;
+using EasyMeeting.DAL;
+using EasyMeeting.DAL.Models;
+using EasyMeeting.WebApp.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using EasyMeeting.WebApp.ViewModels;
+using System;
 using System.Threading.Tasks;
-using EasyMeeting.DAL;
 
 namespace EasyMeeting.WebApp.Controllers
 {
@@ -11,11 +13,13 @@ namespace EasyMeeting.WebApp.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IEmailService _emailService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailService emailService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
+            _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }
 
         [HttpGet]
@@ -29,7 +33,7 @@ namespace EasyMeeting.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { Email = model.Email, Password = model.Password };
+                var user = new User { Email = model.Email };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -40,8 +44,7 @@ namespace EasyMeeting.WebApp.Controllers
                         "Account",
                         new { userId = user.Id, code = code },
                         protocol: HttpContext.Request.Scheme);
-                    var emailVerification = new EmailVerification();
-                    await emailVerification.SendEmailAsync(model.Email, "Confirm your account",
+                    await _emailService.SendEmailAsync(model.Email, "Confirm your account",
                         $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
 
                     return Content("Для завершения регистрации проверьте электронную почту и перейдите по ссылке, указанной в письме");
@@ -80,7 +83,7 @@ namespace EasyMeeting.WebApp.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index","Home");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 else

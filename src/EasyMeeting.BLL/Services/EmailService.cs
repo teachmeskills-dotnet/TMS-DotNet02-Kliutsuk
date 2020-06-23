@@ -1,10 +1,11 @@
-﻿using MailKit.Net.Smtp;
+﻿using EasyMeeting.Common.Interfaces;
+using MailKit.Net.Smtp;
 using MimeKit;
 using System.Threading.Tasks;
 
-namespace EasyMeeting.DAL
+namespace EasyMeeting.BLL.Services
 {
-    public class EmailVerification
+    public class EmailService : IEmailService
     {
         public async Task SendEmailAsync(string email, string subject, string message)
         {

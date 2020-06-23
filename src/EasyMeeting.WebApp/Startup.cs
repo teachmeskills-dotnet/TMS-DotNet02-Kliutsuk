@@ -1,7 +1,7 @@
 using EasyMeeting.BLL.Repository;
+using EasyMeeting.BLL.Services;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL;
-using EasyMeeting.DAL.Identity;
 using EasyMeeting.DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,10 +25,10 @@ namespace EasyMeeting.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             services.AddDbContext<EasyMeetingDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnections")));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<EasyMeetingDbContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
