@@ -1,24 +1,17 @@
 ﻿using EasyMeeting.DAL.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EasyMeeting.DAL
 {
-    public class EasyMeetingDbContext : DbContext
+    public class EasyMeetingDbContext : IdentityDbContext<User>
     {
-        public EasyMeetingDbContext()
+        public EasyMeetingDbContext(DbContextOptions<EasyMeetingDbContext> options) : base(options)
         {
         }
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Meetings> Meetings { get; set; }
-        public DbSet<Profiles> Profiles { get; set; }
-        public DbSet<Participiants> Participiants { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EasyMeetingDataBase;Trusted_Connection=True;");
-        }
+        public DbSet<Meeting> Meetings { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Participiant> Participiants { get; set; }
     }
 }

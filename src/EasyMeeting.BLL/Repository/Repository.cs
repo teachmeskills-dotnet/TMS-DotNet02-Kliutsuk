@@ -94,5 +94,4 @@ namespace EasyMeeting.BLL.Repository
             _context.Entry(entity).State = EntityState.Modified;
         }
     }
-
 }

@@ -4,7 +4,7 @@ using EasyMeeting.Common.Interfaces;
 
 namespace EasyMeeting.DAL.Models
 {
-    public class Meetings : IHasDbIdentity
+    public class Meeting : IHasDbIdentity
     {
         /// <summary>
         /// ID Key.
@@ -25,8 +25,9 @@ namespace EasyMeeting.DAL.Models
         /// Write some notes.
         /// </summary>
         public string Note { get; set; }
-        
-        public int UserId { get; set; }
-        public List<Participiants> Participiants { get; set; }
+
+
+        public string UserId { get; set; }
+        public ICollection<Participiant> Participiants { get; set; }
     }
 }

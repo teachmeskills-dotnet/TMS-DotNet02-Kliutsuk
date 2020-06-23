@@ -1,9 +1,8 @@
 ﻿using EasyMeeting.Common.Interfaces;
-using System.Collections.Generic;
 
 namespace EasyMeeting.DAL.Models
 {
-    public class Participiants : IHasDbIdentity
+    public class Participiant : IHasDbIdentity
     {
         /// <summary>
         /// ID Key.
@@ -11,10 +10,11 @@ namespace EasyMeeting.DAL.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Email participants .
+        /// Email.
         /// </summary>
         public string Email { get; set; }
 
-        public Meetings Meetings { get; set; }
+
+        public Meeting Meeting { get; set; }
     }
 }

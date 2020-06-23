@@ -1,9 +1,8 @@
 ﻿using EasyMeeting.Common.Interfaces;
-using System.Collections.Generic;
 
 namespace EasyMeeting.DAL.Models
 {
-    public class Profiles : IHasDbIdentity
+    public class Profile : IHasDbIdentity
     {
         /// <summary>
         /// ID Key.
@@ -20,7 +19,7 @@ namespace EasyMeeting.DAL.Models
         /// </summary>
         public string Phone { get; set; }
 
-        public int UserId { get; set; }
-        public Users Users { get; set; }
+
+        public string UserId { get; set; }
     }
 }
