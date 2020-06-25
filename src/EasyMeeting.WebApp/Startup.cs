@@ -6,6 +6,7 @@ using EasyMeeting.DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +47,9 @@ namespace EasyMeeting.WebApp
                 app.UseHsts();
             }
 
+            var options = new RewriteOptions().AddRedirect("(.*)/$", "https://www.youtube.com/watch?v=dPWkNS5AMVM&t=578s").AddRedirect("admin.php", "https://www.youtube.com/watch?v=dPWkNS5AMVM&t=578s");
+            app.UseRewriter(options);
+
             app.UseStaticFiles();
             app.UseHttpsRedirection();
 
@@ -56,6 +60,10 @@ namespace EasyMeeting.WebApp
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("admin.php", async context =>
+                {
+                    await context.Response.CompleteAsync();
+                });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
