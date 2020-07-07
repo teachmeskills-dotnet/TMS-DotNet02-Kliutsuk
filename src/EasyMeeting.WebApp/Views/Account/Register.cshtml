@@ -1,18 +1,36 @@
-﻿@model EasyMeeting.WebApp.ViewModels.RegisterViewModel
-<h2>Регистрация нового пользователя</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
-    <div asp-validation-summary="ModelOnly"></div>
-    <div>
-        <label asp-for="Email"></label><br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div>
-        <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <input type="submit" value="Регистрация" />
-    </div>
-</form>
+﻿@model RegisterViewModel
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Easy Meeting</title>
+        <link rel="stylesheet" href="~/css/style-form.css">
+        <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+    </head>
+    <body class="container">
+        <form method="post" asp-controller="Account" asp-action="Register" class="login">
+            <div>
+                <h1 class="login-title">Easy Meeting</h1>
+            </div>
+            <div class="login-email">
+                <h2 asp-validation-for="Email">Email</h2>
+                <input asp-for="Email" class="input-ep">
+            </div>
+            <div class="login-password">
+                <h2 asp-validation-for="Password">Password</h2>
+                <input  asp-for="Password" class="input-ep" type="password">
+            </div>
+            <div class="login-password">
+                <h2 asp-validation-for="PasswordConfirm">Confirm password</h2>
+                <input asp-for="PasswordConfirm" class="input-ep">
+            </div>
+            <div class="sign-in">
+                <ul>
+                    <li><a href="~/calendar/calendar.cshtml">Sign up</a></li>
+                    <li><a href="#">Sign in with Google</a></li>
+                </ul>
+            </div>
+        </form>
+    </body>
+</html>

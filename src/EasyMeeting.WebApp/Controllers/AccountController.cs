@@ -25,7 +25,7 @@ namespace EasyMeeting.WebApp.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            return View("~/Views/Account/Register.cshtml");
         }
 
         [HttpPost]
@@ -33,7 +33,7 @@ namespace EasyMeeting.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { Email = model.Email };
+                var user = new User { Email = model.Email, UserName = model.Email };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
