@@ -67,7 +67,3 @@ h2{
     border: 2px solid;
     border-radius: 15px;
 }
-
-.sign-in li ::after{
-    background-color: black;
-}
