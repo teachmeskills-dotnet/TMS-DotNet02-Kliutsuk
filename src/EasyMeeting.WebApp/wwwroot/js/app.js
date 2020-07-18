@@ -19,16 +19,10 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        select: function (arg) {
-            $("#dialog").dialog({ autoOpen: false });
-            $("#opener").click(function () {
-                $("#dialog").dialog("open");
-            });
-            $('.datepicker').datepicker({
-                dateFormat: "yy-mm-dd"
-            });
+        dateClick: function (info) {
+            $("#dialog").dialog("open");
         },
-        entClick: function (arg) {
+        eventClick: function (arg) {
             if (confirm('Are you sure you want to delete this event?')) {
                 arg.event.remove()
             }
@@ -83,4 +77,11 @@
         ],
     });
     calendar.render();
+    $('#dialog').dialog({ autoOpen: false });
+    $("#opener").click(function () {
+        $("#dialog").dialog("open");
+    });
+    $('.datepicker').datepicker({
+        dateFormat: "yy-mm-dd"
+    });
 });

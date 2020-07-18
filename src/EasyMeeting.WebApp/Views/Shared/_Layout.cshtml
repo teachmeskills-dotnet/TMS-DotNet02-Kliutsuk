@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="~/css/style-home.css" />
 </head>
 <body>
-    <body>
     <header>
         <div class="header">
             <ul>
@@ -25,7 +24,6 @@
             </div>
         </div>
     </div>
-</body>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -37,9 +35,9 @@
             &copy; 2020 - Easy Meeting - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/app.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

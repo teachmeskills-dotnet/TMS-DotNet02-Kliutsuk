@@ -26,6 +26,16 @@ namespace EasyMeeting.DAL.Models
         /// </summary>
         public string Note { get; set; }
 
+        /// <summary>
+        /// Email of participiants.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Title of meeting.
+        /// </summary>
+        public string Title { get; set; }
+
 
         public string UserId { get; set; }
         public ICollection<Participiant> Participiants { get; set; }
