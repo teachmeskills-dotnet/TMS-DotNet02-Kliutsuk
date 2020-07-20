@@ -12,9 +12,14 @@ namespace EasyMeeting.DAL.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Meetings date.
+        /// Meetings start date.
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// Meetings end date.
+        /// </summary>
+        public DateTime EndDate { get; set; }
 
         /// <summary>
         /// Meeting place.
