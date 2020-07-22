@@ -4,9 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-signin-client_id" content="414567214016-bqfl1fa8eq2es0srpv9p1mtt5arh7chp.apps.googleusercontent.com">
         <title>Easy Meeting</title>
         <link rel="stylesheet" href="~/css/style-form.css">
         <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </head>
     <body class="container">
         <form method="post" asp-controller="Account" asp-action="Register" class="login">
@@ -28,7 +30,7 @@
             <div class="sign-in">
                 <ul>
                     <li><input type="submit" value="Sign Up" /></li>
-                    <li><input type="submit" value="Sign in with Google" /></li>
+                    <li><div class="g-signin2" data-onsuccess="onSignIn"></div></li>
                 </ul>
             </div>
         </form>

@@ -19,7 +19,7 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        dateClick: function (info) {
+        select: function (arg) {
             $("#dialog").dialog("open");
         },
         eventClick: function (arg) {
