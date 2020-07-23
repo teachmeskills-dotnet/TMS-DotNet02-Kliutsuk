@@ -44,6 +44,11 @@ h2 {
     margin-right: 10px;
 }
 
+.header ul, li{
+    display: inline;
+    margin-right: 5px;
+}
+
 .footer{
     font-size: 14px;
     border-top: 1px solid grey;

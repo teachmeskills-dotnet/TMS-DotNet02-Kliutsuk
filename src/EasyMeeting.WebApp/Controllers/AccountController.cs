@@ -1,5 +1,4 @@
 ﻿using EasyMeeting.Common.Interfaces;
-using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
 using EasyMeeting.WebApp.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -38,16 +37,16 @@ namespace EasyMeeting.WebApp.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action(
-                    //    "Calendar",
-                    //    "Calendar",
-                    //    new { userId = user.Id, code = code },
-                    //    protocol: HttpContext.Request.Scheme);
-                    //await _emailService.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action(
+                        "",
+                        "",
+                        new { userId = user.Id, code = code },
+                        protocol: HttpContext.Request.Scheme);
+                    await _emailService.SendEmailAsync(model.Email, "Confirm your account",
+                        $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
 
-                    return RedirectToAction("Calendar", "Calendar");
+                    return RedirectToAction("", "");
                 }
                 else
                 {
@@ -83,7 +82,7 @@ namespace EasyMeeting.WebApp.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Calendar", "Calendar");
+                        return RedirectToAction("", "");
                     }
                 }
                 else
@@ -100,7 +99,7 @@ namespace EasyMeeting.WebApp.Controllers
         {
             // удаляем аутентификационные куки
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("", "");
         }
     }
 }
