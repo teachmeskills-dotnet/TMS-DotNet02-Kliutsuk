@@ -350,5 +350,4 @@ MigrationBackup/
 .ionide/
 
 #Hidden Files
-/src/EasyMeeting.BLL/Constants
 /src/EasyMeeting.WebApp/appsettings.json
