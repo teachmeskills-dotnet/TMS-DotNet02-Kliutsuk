@@ -1,5 +1,4 @@
 ﻿using EasyMeeting.Common.Interfaces;
-using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
 using EasyMeeting.WebApp.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -25,7 +24,7 @@ namespace EasyMeeting.WebApp.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            return View("~/Views/Account/Register.cshtml");
         }
 
         [HttpPost]
@@ -33,21 +32,21 @@ namespace EasyMeeting.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { Email = model.Email };
+                var user = new User { Email = model.Email, UserName = model.Email };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action(
-                        "ConfirmEmail",
-                        "Account",
+                        "",
+                        "",
                         new { userId = user.Id, code = code },
                         protocol: HttpContext.Request.Scheme);
                     await _emailService.SendEmailAsync(model.Email, "Confirm your account",
                         $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
 
-                    return Content("Для завершения регистрации проверьте электронную почту и перейдите по ссылке, указанной в письме");
+                    return RedirectToAction("", "");
                 }
                 else
                 {
@@ -83,7 +82,7 @@ namespace EasyMeeting.WebApp.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("", "");
                     }
                 }
                 else
@@ -100,7 +99,7 @@ namespace EasyMeeting.WebApp.Controllers
         {
             // удаляем аутентификационные куки
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("", "");
         }
     }
 }

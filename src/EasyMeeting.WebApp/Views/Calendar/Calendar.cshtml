@@ -1,0 +1,51 @@
+﻿@model Meeting
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <link href='~/fullcalendarIo/main.css' rel='stylesheet' />
+    <link href='~/lib/bootstrap/dist/css/bootstrap.css' rel='stylesheet' />
+    <link href='~/lib/jquery/jquery-ui.css' rel='stylesheet' />
+    <script src='~/fullcalendarIo/main.js'></script>
+    <script src="~/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script></script>
+</head>
+<body>
+    <script></script>
+    <div id='calendar'></div>
+    <div id="dialog">
+        <form>
+            <div class="form-group">
+                <label>Title</label>
+                <input asp-for="Title" type="text" class="form-control" id="Title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label>Start date</label>
+                <input asp-for="StartDate" type="text" class="form-control datepicker" id="start" placeholder="Start date" />
+            </div>
+            <div class="form-group">
+                <label>End date</label>
+                <input asp-for="EndDate" type="text" class="form-control datepicker" id="end" placeholder="End date">
+            </div>
+            <div class="form-group">
+                <label>Place</label>
+                <input asp-for="Place" type="text" class="form-control" id="Place" placeholder="Place">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input asp-for="Note" type="text" class="form-control" id="Note" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label>Emails of participants</label>
+                <textarea asp-for="Email" type="text" class="form-control" id="Emails" placeholder="Emails of participants, for example: some@some.com , some2@some.com , some3@some.com "></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Add event</button>
+        </form>
+    </div>
+</body>
+</html>
