@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace EasyMeeting.WebApp
 {
@@ -49,6 +50,8 @@ namespace EasyMeeting.WebApp
 
             var options = new RewriteOptions().AddRedirect("(.*)/$", "https://www.youtube.com/watch?v=dPWkNS5AMVM&t=578s").AddRedirect("admin.php", "https://www.youtube.com/watch?v=dPWkNS5AMVM&t=578s");
             app.UseRewriter(options);
+
+            app.UseSerilogRequestLogging();
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();
