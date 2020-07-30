@@ -32,9 +32,9 @@ namespace EasyMeeting.DAL.Models
         public string Note { get; set; }
 
         /// <summary>
-        /// Email of participiants.
+        /// Durations.
         /// </summary>
-        public string Email { get; set; }
+        public int Duration { get; set; }
 
         /// <summary>
         /// Title of meeting.

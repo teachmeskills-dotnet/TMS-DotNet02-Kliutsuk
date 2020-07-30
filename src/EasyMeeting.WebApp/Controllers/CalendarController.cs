@@ -40,7 +40,7 @@ namespace EasyMeeting.WebApp.Controllers
                 title = e.Title,
                 startdate = e.StartDate.ToString("yyyy/MM/dd"),
                 enddate = e.EndDate.ToString("yyyy/MM/dd"),
-                email = e.Email,
+                //email = e.Email,
                 place = e.Place,
                 note = e.Note
 

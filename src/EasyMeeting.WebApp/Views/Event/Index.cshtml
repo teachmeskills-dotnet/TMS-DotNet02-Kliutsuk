@@ -1,13 +1,13 @@
-﻿@model Meeting
+﻿@model EventViewModel
 
-<input id="title" type="text" />
-<input id="start" type="datetime-local" />
-<input id="end" type="datetime-local" />
-<input id="duration" type="number" />
-<input id="address" type="text" />
-<input id="description" type="text" />
+<input asp-for="Title" id="title" type="text" />
+<input asp-for="Start" id="start" type="datetime-local" />
+<input asp-for="End" id="end" type="datetime-local" />
+<input asp-for="Duration" id="duration" type="number" />
+<input asp-for="Address" id="address" type="text" />
+<input asp-for="Description" id="description" type="text" />
 
-<button id="button">Generate</button>
+<button type="button" id="button">Generate</button>
 
 <input id="calendar" type="text" readonly />
 
