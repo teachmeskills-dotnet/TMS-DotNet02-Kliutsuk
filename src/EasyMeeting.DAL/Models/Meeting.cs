@@ -41,6 +41,11 @@ namespace EasyMeeting.DAL.Models
         /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// Link for google calendar.
+        /// </summary>
+        public string Link { get; set; }
+
 
         public string UserId { get; set; }
         public ICollection<Participiant> Participiants { get; set; }

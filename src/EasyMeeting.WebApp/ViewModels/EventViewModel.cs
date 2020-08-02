@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EasyMeeting.WebApp.ViewModels
 {
@@ -15,11 +13,13 @@ namespace EasyMeeting.WebApp.ViewModels
         /// <summary>
         /// Start date event.
         /// </summary>
+        [Required]
         public DateTime Start { get; set; }
 
         /// <summary>
         /// End date event.
         /// </summary>
+        [Required]
         public DateTime End { get; set; }
 
         /// <summary>
@@ -40,6 +40,12 @@ namespace EasyMeeting.WebApp.ViewModels
         /// <summary>
         /// Email for email service.
         /// </summary>
+        [Required]
         public string Emails { get; set; }
+
+        /// <summary>
+        /// Link for google calendar.
+        /// </summary>
+        public string Link { get; set; }
     }
 }

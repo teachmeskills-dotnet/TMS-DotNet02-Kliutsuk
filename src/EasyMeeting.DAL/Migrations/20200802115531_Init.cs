@@ -56,8 +56,9 @@ namespace EasyMeeting.DAL.Migrations
                     EndDate = table.Column<DateTime>(nullable: false),
                     Place = table.Column<string>(nullable: true),
                     Note = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
+                    Duration = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
+                    Link = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

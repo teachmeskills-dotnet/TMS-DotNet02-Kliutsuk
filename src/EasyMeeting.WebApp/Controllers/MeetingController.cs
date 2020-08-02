@@ -29,11 +29,12 @@ namespace EasyMeeting.WebApp.Controllers
         /// View form for registration event.
         /// </summary>
         /// <returns>View form</returns>
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Event()
         {
             if (User.Identity.IsAuthenticated)
             {
-                return View("~/Views/Event/index.cshtml");
+                return View("~/Views/Event/Event.cshtml");
             }
             else
             {
@@ -41,29 +42,34 @@ namespace EasyMeeting.WebApp.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetEventAsync(EventViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> Event(EventViewModel model)
         {
             if(ModelState.IsValid)
             {
-                var newEvent = new Meeting
+                var events = new Meeting
                 {
                     Title = model.Title,
                     StartDate = model.Start,
                     EndDate = model.End,
+                    Duration = model.Duration,
                     Note = model.Description,
-                    Place = model.Address
+                    Place = model.Address,
+                    Link = model.Link
                 };
-                var email = new Participiant
+                var participiants = new Participiant
                 {
                     Email = model.Emails
                 };
-                return Json(newEvent, email);
+
+                await _db.Meetings.AddAsync(events);
+                await _db.Participiants.AddAsync(participiants);
+                await _db.SaveChangesAsync();
+
+                return View("~/Views/Event/Event.cshtml");
             }
-            else
-            {
-                return RedirectToAction("index","Meeting");
-            }
+
+            return View(model);
         }
     }
 }
