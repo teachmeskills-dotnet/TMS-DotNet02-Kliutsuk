@@ -30,12 +30,12 @@ namespace EasyMeeting.WebApp.ViewModels
         /// <summary>
         /// Addres event.
         /// </summary>
-        public string Address { get; set; }
+        public string Place { get; set; }
 
         /// <summary>
         /// Description for event.
         /// </summary>
-        public string Description { get; set; }
+        public string Note { get; set; }
 
         /// <summary>
         /// Email for email service.

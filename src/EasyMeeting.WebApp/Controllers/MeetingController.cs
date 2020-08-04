@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using EasyMeeting.DAL;
+﻿using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
-using EasyMeeting.WebApp.Models;
 using EasyMeeting.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EasyMeeting.WebApp.Controllers
@@ -34,7 +31,7 @@ namespace EasyMeeting.WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return View("~/Views/Event/Event.cshtml");
+                return View();
             }
             else
             {
@@ -42,19 +39,25 @@ namespace EasyMeeting.WebApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Writes data in database.
+        /// </summary>
+        /// <param name="model">Event View Model</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Event(EventViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                //TODO: Add to service (52-70).
                 var events = new Meeting
                 {
                     Title = model.Title,
-                    StartDate = model.Start,
-                    EndDate = model.End,
+                    Start = model.Start,
+                    End = model.End,
                     Duration = model.Duration,
-                    Note = model.Description,
-                    Place = model.Address,
+                    Note = model.Note,
+                    Place = model.Place,
                     Link = model.Link
                 };
                 var participiants = new Participiant
