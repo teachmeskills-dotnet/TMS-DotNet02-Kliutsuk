@@ -67,7 +67,7 @@ namespace EasyMeeting.WebApp.Controllers
             var meetings = await _db.Meetings.AsNoTracking().Include(p => p.Participiants).FirstOrDefaultAsync(p => p.Id == id);
             var participiants = meetings.Participiants.ToList();
             //var participiants = _db.Participiants.Find();
-            //string[] emails = participiants.Split(',');
+            //string emails = participiants.Split(',');
             //var x = emails.Length;
 
             //var link = _db.Meetings;

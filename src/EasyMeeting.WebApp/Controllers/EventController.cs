@@ -1,4 +1,7 @@
-﻿using EasyMeeting.DAL;
+﻿using AutoMapper;
+using EasyMeeting.BLL.Models;
+using EasyMeeting.BLL.Services;
+using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
 using EasyMeeting.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -9,17 +12,23 @@ using System.Threading.Tasks;
 namespace EasyMeeting.WebApp.Controllers
 {
     /// <summary>
-    /// Meeting controller.
+    /// Event controller.
     /// </summary>
-    public class MeetingController : Controller
+    public class EventController : Controller
     {
         private readonly ILogger<Meeting> _loger;
         private readonly EasyMeetingDbContext _db;
+        private readonly IMapper _mapper;
+        private readonly MeetingService _meetingService;
+        private readonly ParticipiantService _participiantService;
 
-        public MeetingController(EasyMeetingDbContext db, ILogger<Meeting> loger)
+        public EventController(EasyMeetingDbContext db, ILogger<Meeting> loger, IMapper mapper, MeetingService meetingService, ParticipiantService participiantService)
         {
             _db = db ?? throw new ArgumentNullException(nameof(db));
             _loger = loger ?? throw new ArgumentNullException(nameof(loger));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _meetingService = meetingService ?? throw new ArgumentNullException(nameof(meetingService));
+            _participiantService = participiantService ?? throw new ArgumentNullException(nameof(participiantService));
         }
 
         /// <summary>
@@ -49,27 +58,12 @@ namespace EasyMeeting.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO: Add to service (52-70).
-                var events = new Meeting
-                {
-                    Title = model.Title,
-                    Start = model.Start,
-                    End = model.End,
-                    Duration = model.Duration,
-                    Note = model.Note,
-                    Place = model.Place,
-                    Link = model.Link
-                };
-                var participiants = new Participiant
-                {
-                    Email = model.Emails
-                };
+                var meeting = _mapper.Map<Meetings>(model);
+                var participiant = _mapper.Map<Participiants>(model);
+                await _participiantService.AddParticipiantsAsync(participiant);
+                await _meetingService.AddMeetingAsync(meeting);
 
-                await _db.Meetings.AddAsync(events);
-                await _db.Participiants.AddAsync(participiants);
-                await _db.SaveChangesAsync();
-
-                return View("~/Views/Event/Event.cshtml");
+                return Ok();
             }
 
             return View(model);

@@ -1,3 +1,6 @@
+using AutoMapper;
+using EasyMeeting.BLL.Automapper;
+using EasyMeeting.BLL.Models;
 using EasyMeeting.BLL.Repository;
 using EasyMeeting.BLL.Services;
 using EasyMeeting.Common.Interfaces;
@@ -31,6 +34,9 @@ namespace EasyMeeting.WebApp
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<EasyMeetingDbContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<MeetingService>();
+            services.AddScoped<ParticipiantService>();
+            services.AddAutoMapper(c => { c.AddProfile<MeetingMap>();c.AddProfile<ParticipiantsMap>(); }, typeof(Startup));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
