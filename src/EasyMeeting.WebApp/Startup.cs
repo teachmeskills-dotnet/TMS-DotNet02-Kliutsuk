@@ -6,6 +6,7 @@ using EasyMeeting.BLL.Services;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
+using EasyMeeting.WebApp.Automapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -36,7 +37,7 @@ namespace EasyMeeting.WebApp
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<MeetingService>();
             services.AddScoped<ParticipiantService>();
-            services.AddAutoMapper(c => { c.AddProfile<MeetingMap>();c.AddProfile<ParticipiantsMap>(); }, typeof(Startup));
+            services.AddAutoMapper(c => { c.AddProfile<MeetingMap>();c.AddProfile<ParticipiantsMap>(); c.AddProfile<AutoMapping>(); }, typeof(Startup));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 

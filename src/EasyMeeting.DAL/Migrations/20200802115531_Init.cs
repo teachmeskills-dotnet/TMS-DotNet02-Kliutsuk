@@ -52,8 +52,8 @@ namespace EasyMeeting.DAL.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
+                    Start = table.Column<DateTime>(nullable: false),
+                    End = table.Column<DateTime>(nullable: false),
                     Place = table.Column<string>(nullable: true),
                     Note = table.Column<string>(nullable: true),
                     Duration = table.Column<int>(nullable: false),
