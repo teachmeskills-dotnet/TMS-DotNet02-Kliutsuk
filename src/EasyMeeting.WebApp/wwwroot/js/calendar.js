@@ -33,5 +33,10 @@ function main() {
     document.getElementById('button').addEventListener('click', click);
 }
 
-
 document.addEventListener('DOMContentLoaded', main);
+
+function copy() {
+    var copyText = document.getElementById("calendar");
+    copyText.select();
+    document.execCommand("copy");
+}
