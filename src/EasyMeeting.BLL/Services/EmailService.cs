@@ -22,7 +22,7 @@ namespace EasyMeeting.BLL.Services
 
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync(EmailConstants.SMTP_GOOGLE, 25, false);
+                await client.ConnectAsync(EmailConstants.SMTP_ETHEREAL, 587, false);
                 await client.AuthenticateAsync(EmailConstants.MESSAGE_SENDER_ADDRESS, EmailConstants.EMAIL_PASSWORD);
                 await client.SendAsync(emailMessage);
 

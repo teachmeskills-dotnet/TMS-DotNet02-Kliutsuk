@@ -3,6 +3,7 @@ using EasyMeeting.BLL.Models;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL.Models;
 using System.Threading.Tasks;
+using System;
 
 namespace EasyMeeting.BLL.Services
 {
@@ -18,8 +19,8 @@ namespace EasyMeeting.BLL.Services
         /// <param name="mapper"></param>
         public MeetingService(IRepository<Meeting> db, IMapper mapper)
         {
-            _db = db ?? throw new System.ArgumentNullException(nameof(db));
-            _mapper = mapper ?? throw new System.ArgumentNullException(nameof(mapper));
+            _db = db ?? throw new ArgumentNullException(nameof(db));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         /// <summary>
@@ -27,9 +28,10 @@ namespace EasyMeeting.BLL.Services
         /// </summary>
         /// <param name="meeting"></param>
         /// <returns></returns>
-        public async Task AddMeetingAsync(Meetings meetings)
+        public async Task AddMeetingAsync(Meetings meetings, string userId)
         {
             var dataMeeting = _mapper.Map<Meeting>(meetings);
+            dataMeeting.UserId = userId;
             await _db.AddAsync(dataMeeting);
             await _db.SaveChangesAsync();
         }

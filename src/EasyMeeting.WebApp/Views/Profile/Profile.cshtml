@@ -1,3 +1,11 @@
-﻿<h1>@User.Identity.Name</h1>
-<h2>User Name</h2>
-<h2>Phone</h2>
+﻿@model ProfileViewModel
+<h2>@User.Identity.Name</h2>
+<h3>Your events:</h3>
+<ul>
+    <li>
+        <p>
+
+        </p>
+        <button asp-action="SendEmail">Send Email</button>
+    </li>
+</ul>

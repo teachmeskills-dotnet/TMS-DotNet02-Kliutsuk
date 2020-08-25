@@ -1,25 +1,27 @@
 ﻿@model EventViewModel
-    <form class="container" method="post" asp-controller="Event" asp-action="Event">
-        <h3>Event title</h3>
-        <input id="title" type="text" asp-for="Title" placeholder="EXAMPLE" /><br>
-        <h3>Start date event</h3>
-        <input id="start" type="datetime-local" asp-for="Start" /><br>
-        <h3>End date event</h3>
-        <input id="end" type="datetime-local" asp-for="End" /><br>
-        <h3>Duration</h3>
-        <input id="duration" type="number" asp-for="Duration" /><br>
-        <h3>Place</h3>
-        <input id="address" type="text" asp-for="Place" placeholder="Minsk, oktyabrskaya street 1/1, room 202" /><br>
-        <h3>Description</h3>
-        <textarea id="description" type="text" asp-for="Note" placeholder="Meeting" ></textarea><br>
-        <h3>Emails of participiants</h3>
-        <input id="email" type="text" asp-for="Emails" placeholder="some@some.com, some2@some.com" /><br>
+<form class="container" method="post" asp-controller="Event" asp-action="Event">
+    <h3>Event title</h3>
+    <input id="title" type="text" asp-for="Title" placeholder="EXAMPLE" /><br>
+    <h3>Start date event</h3>
+    <input id="start" type="datetime-local" asp-for="Start" /><br>
+    <h3>End date event</h3>
+    <input id="end" type="datetime-local" asp-for="End" /><br>
+    <h3>Duration</h3>
+    <input id="duration" type="number" asp-for="Duration" /><br>
+    <h3>Place</h3>
+    <input id="address" type="text" asp-for="Place" placeholder="Minsk, oktyabrskaya street 1/1, room 202" /><br>
+    <h3>Description</h3>
+    <textarea id="description" type="text" asp-for="Note" placeholder="Meeting"></textarea><br>
+    <h3>Emails of participiants</h3>
+    <input id="email" type="text" asp-for="Emails" placeholder="some@some.com, some2@some.com" /><br>
 
-        <button type="submit" id="button">Generate</button><br>
+    <button type="submit" id="button">Generate</button><br>
 
-        <input id="calendar" type="text" readonly asp-for="Link" />
-        <button type="button" onclick="copy()" id="copy">Copy link</button>
+    <input id="calendar" type="text" readonly asp-for="Link" />
+    <button id="copy" type="submit" asp-action="SendEmail">Send email</button>
 
-        <script src="~/js/event.js"></script>
-        <script src="~/js/calendar.js"></script>
-    </form>
+
+</form>
+
+<script src="~/js/event.js"></script>
+<script src="~/js/calendar.js"></script>

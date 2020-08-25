@@ -62,18 +62,18 @@ namespace EasyMeeting.WebApp.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> SendEmail([FromBody] int id)
+        public async Task<IActionResult> SendEmail([FromBody] int id, [FromBody] string link)
         {
             var meetings = await _db.Meetings.AsNoTracking().Include(p => p.Participiants).FirstOrDefaultAsync(p => p.Id == id);
             var participiants = meetings.Participiants.ToList();
-            //var participiants = _db.Participiants.Find();
-            //string emails = participiants.Split(',');
-            //var x = emails.Length;
+            var googleLink = await _db.Meetings.AsNoTracking().FirstOrDefaultAsync(p=>p.Link == link);
 
-            //var link = _db.Meetings;
-            //await _emailService.SendEmailAsync(emails[x],
-            //                                   "Event for you",
-            //                                   $"Click on the <a href='{link}'>link</a> and add event in your Google Calendar");
+            await _emailService.SendEmailAsync(participiants.ToString(),
+                                               "Event for you",
+                                               $"Click on the <a href='{googleLink}'>link</a> and add event in your Google Calendar\n" +
+                                               $"\n" +
+                                               $"\n" +
+                                               $"If you have another questions, please, texted {User.Identity.Name}");
 
             return Ok();
         }
