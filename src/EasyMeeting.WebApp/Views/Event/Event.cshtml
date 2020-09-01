@@ -1,4 +1,7 @@
 ﻿@model EventViewModel
+@{ 
+    Layout = null;
+}
 <form class="container" method="post" asp-controller="Event" asp-action="Event">
     <h3>Event title</h3>
     <input id="title" type="text" asp-for="Title" placeholder="EXAMPLE" /><br>
@@ -19,8 +22,6 @@
 
     <input id="calendar" type="text" readonly asp-for="Link" />
     <button id="copy" type="submit" asp-action="SendEmail">Send email</button>
-
-
 </form>
 
 <script src="~/js/event.js"></script>
