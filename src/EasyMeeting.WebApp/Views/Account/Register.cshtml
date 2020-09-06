@@ -2,40 +2,58 @@
 @{ 
     Layout = null;
 }
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="google-signin-client_id" content="414567214016-bqfl1fa8eq2es0srpv9p1mtt5arh7chp.apps.googleusercontent.com">
-        <title>Easy Meeting</title>
-        <link rel="stylesheet" href="~/css/style-form.css">
-        <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-    </head>
-    <body class="container">
-        <form method="post" asp-controller="Account" asp-action="Register" class="login">
-            <div>
-                <h1 class="login-title">Easy Meeting</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Easy Meeting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/style-form">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url(~/image/Meeting.jpg)">
+            <div class="wrap-login100">
+                <form asp-controller="Account" asp-action="Register" class="login100-form">
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-landscape"></i>
+                    </span>
+
+                    <span class="login100-form-title">
+                        Sign Up
+                    </span>
+
+                    <div class="wrap-input100">
+                        <input asp-for="Email" class="input100" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100">
+                        <input asp-for="Password" class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="wrap-input100" data-validate="Enter password">
+                        <input asp-for="PasswordConfirm" class="input100" type="password" name="confpass" placeholder="Confirm password">
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Sign Up
+                        </button>
+                    </div>
+
+                    <div class="text-center">
+                        <a class="txt1" asp-controller="Account" asp-action="Login">
+                            Sign In!
+                        </a>
+                    </div>
+                </form>
             </div>
-            <div class="login-email">
-                <h2 asp-validation-for="Email">Email</h2>
-                <input asp-for="Email" class="input-ep">
-            </div>
-            <div class="login-password">
-                <h2 asp-validation-for="Password">Password</h2>
-                <input  asp-for="Password" class="input-ep" type="password">
-            </div>
-            <div class="login-password">
-                <h2 asp-validation-for="PasswordConfirm">Confirm password</h2>
-                <input asp-for="PasswordConfirm" class="input-ep">
-            </div>
-            <div class="sign-in">
-                <ul>
-                    <li><input type="submit" value="Sign Up" /></li>
-                    <li><div class="g-signin2" data-onsuccess="onSignIn"></div></li>
-                </ul>
-            </div>
-        </form>
-    </body>
+        </div>
+    </div>
+</body>
 </html>

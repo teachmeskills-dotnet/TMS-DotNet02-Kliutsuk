@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="Views\Home\" />
     <Folder Include="wwwroot\fullcalendarIo\" />
+    <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
 
