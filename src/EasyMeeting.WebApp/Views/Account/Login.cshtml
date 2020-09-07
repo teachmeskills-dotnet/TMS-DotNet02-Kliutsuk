@@ -8,18 +8,18 @@
     <title>Easy Meeting</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/css/Account/fonts/iconic/css/material-design-iconic-font.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/css/style-form">
+    <link rel="stylesheet" type="text/css" href="/css/Account/style-form.css">
 </head>
 <body>
 
     <div class="limiter">
-        <div class="container-login100" style="background-image: url(~/image/Meeting.jpg)">
+        <div class="container-login100" style="background-image: url(https://sherpany-live-6162453463ab4ff6a0c805d0-9921883.aldryn-media.com/filer_public_thumbnails/filer_public/dc/13/dc139f14-ca43-4f1f-915d-0d6143825f9f/effective-meetings-with-agile-meeting-management.jpg__840x620_q90_crop_subsampling-2.jpg)">
             <div class="wrap-login100">
-                <form class="login100-form">
+                <form method="post" asp-controller="Account" asp-action="Login" class="login100-form">
                     <span class="login100-form-logo">
-                        <i class="zmdi zmdi-landscape"></i>
+                        <img src="~/img/default.png" />
                     </span>
 
                     <span class="login100-form-title">
@@ -28,22 +28,20 @@
 
                     <div class="wrap-input100">
                         <input asp-for="Email" class="input100" type="text" name="email" placeholder="Email">
-                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        <span asp-validation-for="Email" class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
                     <div class="wrap-input100">
-                        <input asp-for="Password" class="input100" type="password" name="pass" placeholder="Password">
-                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                        <input asp-for="Password" class="input100" type="password" placeholder="Password">
+                        <span asp-validation-for="Password" class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button type="submit" class="login100-form-btn">
-                            Log In
-                        </button>
+                        <button type="submit" class="login100-form-btn">Sign In</button>
                     </div>
 
                     <div class="text-center">
-                        <a class="txt1" href="up.html">
+                        <a class="txt1" asp-controller="Account" asp-action="Register">
                             Sign Up!
                         </a>
                     </div>
