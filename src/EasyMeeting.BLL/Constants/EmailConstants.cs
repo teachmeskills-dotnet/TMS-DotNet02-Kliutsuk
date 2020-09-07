@@ -22,7 +22,7 @@
         /// <summary>
         /// Message sender address.
         /// </summary>
-        public const string MESSAGE_SENDER_ADDRESS = "marlee23@ethereal.email";
+        public const string MESSAGE_SENDER_ADDRESS = "easy.meetingemail@gmail.com";
 
         /// <summary>
         /// Organization name.
@@ -32,7 +32,7 @@
         /// <summary>
         /// Passwor email sender.
         /// </summary>
-        public const string EMAIL_PASSWORD = "SuDUvUYcm7wcEZ8W8E";
+        public const string EMAIL_PASSWORD = "aHR0cHM6Ly9tYWlsLnJ1Lw==";
 
     }
 }
