@@ -68,13 +68,17 @@ namespace EasyMeeting.WebApp.Controllers
                 var userId = User.Claims.FirstOrDefault(claim => claim.Type.Contains("nameidentifier")).Value;
                 var meeting = _mapper.Map<Meetings>(model);
                 var participiant = _mapper.Map<Participiants>(model);
+                string[] emails = model.Emails.Split(", ");
                 await _participiantService.AddParticipiantsAsync(participiant);
                 await _meetingService.AddMeetingAsync(meeting, userId);
 
-                await _emailService.SendEmailAsync(model.Emails,
+                foreach (var item in emails)
+                {
+                    await _emailService.SendEmailAsync(item,
                     "Event for you",
                     $"Click on the <a href='{model.Link}'>link</a> and add event in your Google Calendar\n\n\n" +
                     $"If you have another questions, please, texted {User.Identity.Name}"); ;
+                }
 
                 return View();
             }
