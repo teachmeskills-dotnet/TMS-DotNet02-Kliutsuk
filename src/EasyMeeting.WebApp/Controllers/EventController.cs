@@ -76,7 +76,7 @@ namespace EasyMeeting.WebApp.Controllers
                     $"Click on the <a href='{model.Link}'>link</a> and add event in your Google Calendar\n\n\n" +
                     $"If you have another questions, please, texted {User.Identity.Name}"); ;
 
-                return RedirectToAction("Index", "Home");
+                return View();
             }
 
             return View(model);

@@ -220,3 +220,8 @@ input:focus ~ .bar:after {
      opacity: 1;
      transform: scale(4);
 }
+
+.btn1 {
+    margin-top: 10px;
+    margin-left: 80px;
+}   
