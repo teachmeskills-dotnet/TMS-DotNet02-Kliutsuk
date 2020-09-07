@@ -1,28 +1,69 @@
 ﻿@model EventViewModel
-@{ 
+@{
     Layout = null;
 }
-<form class="container" method="post" asp-controller="Event" asp-action="Event">
-    <h3>Event title</h3>
-    <input id="title" type="text" asp-for="Title" placeholder="EXAMPLE" /><br>
-    <h3>Start date event</h3>
-    <input id="start" type="datetime-local" asp-for="Start" /><br>
-    <h3>End date event</h3>
-    <input id="end" type="datetime-local" asp-for="End" /><br>
-    <h3>Duration</h3>
-    <input id="duration" type="number" asp-for="Duration" /><br>
-    <h3>Place</h3>
-    <input id="address" type="text" asp-for="Place" placeholder="Minsk, oktyabrskaya street 1/1, room 202" /><br>
-    <h3>Description</h3>
-    <textarea id="description" type="text" asp-for="Note" placeholder="Meeting"></textarea><br>
-    <h3>Emails of participiants</h3>
-    <input id="email" type="text" asp-for="Emails" placeholder="some@some.com, some2@some.com" /><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/Event/event-style.css">
+    <title>Easy Meeting</title>
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="post" asp-controller="Event" asp-action="Event" class="login100-form">
+                    <span class="login100-form-title">
+                        New event
+                    </span>
+                    <div class="group">
+                        <input id="title" type="text" asp-for="Title" placeholder="Example">
+                        <span class="bar"></span>
+                        <label>Title</label>
+                    </div>
+                    <div class="group">
+                        <input id="start" type="datetime-local" asp-for="Start">
+                        <span class="bar"></span>
+                        <label>Start date</label>
+                    </div>
+                    <div class="group">
+                        <input id="end" type="datetime-local" asp-for="End">
+                        <span class="bar"></span>
+                        <label>End date</label>
+                    </div>
+                    <div class="group">
+                        <input id="duration" type="number" asp-for="Duration" />
+                        <span class="bar"></span>
+                        <label>Duration</label>
+                    </div>
+                    <div class="group">
+                        <input id="address" type="text" asp-for="Place" placeholder="Minsk, oktyabrskaya street 1/1, room 202" />
+                        <span class="bar"></span>
+                        <label>Adress</label>
+                    </div>
+                    <div class="group">
+                        <input rows="4" id="description" type="text" asp-for="Note" placeholder="Some information about event">
+                        <span class="bar"></span>
+                        <label>Description</label>
+                    </div>
+                    <div class="group">
+                        <input id="email" type="text" asp-for="Emails" placeholder="some@some.com, some2@some.com" />
+                        <span class="bar"></span>
+                        <label>Emails</label>
+                    </div>
 
-    <button type="submit" id="button">Generate</button><br>
+                    <button class="btn" type="submit" id="button">Generate link and send email</button><br>
 
-    <input id="calendar" type="text" readonly asp-for="Link" />
-    <button id="copy" type="submit" asp-action="SendEmail">Send email</button>
-</form>
+                    <input id="calendar" type="text" readonly asp-for="Link" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 
 <script src="~/js/event.js"></script>
 <script src="~/js/calendar.js"></script>
