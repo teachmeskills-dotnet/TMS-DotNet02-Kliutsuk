@@ -4,29 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Easy Meeting</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/style-home.css" />
 </head>
 <body>  
-    <header>
-        <div class="header">
-            <ul>
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <ul class="menu">
+                    <li><a class="ab">About</a></li>
+                </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li style="display: inline; margin-right: 5px;"><p>@User.Identity.Name</p></li>
-
-                    <li style="display: inline; margin-right: 5px;">
-                        <form style="display: inline; margin-right: 5px;" method="post" asp-controller="Account" asp-action="Logout">
-                            <input style="display: inline; margin-right: 5px;" type="submit" value="Logout" />
-                        </form>
-                    </li>
+                    <ul>
+                        <li>
+                            <form style="text-align: end;" asp-controller="Account" asp-action="Logout">
+                                <input style="display: inline; margin-right: 5px;" type="submit" value="Logout" />
+                            </form>
+                        </li>
+                    </ul>
                 }
                 else
                 {
-                    <li style="display: inline; margin-right: 5px;"><a asp-controller="Account" asp-action="Login">Sign in</a></li>
-                    <li style="display: inline; margin-right: 5px;"><a asp-controller="Account" asp-action="Register">Sign up</a></li>
+                    <a asp-controller="Account" asp-action="Login">Sign in</a>
                 }
-            </ul>
+            </div>
+            <div class="offer">
+                <h1>Easy Meeting</h1>
+                <a asp-controller="Event" asp-action="Event" class="btn">Get started!</a>
+            </div>
         </div>
     </header>
     
@@ -36,14 +42,17 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer id="footer" class="footer">
         <div class="container">
-            &copy; 2020 - Easy Meeting - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="footer-text">
+                <p>©2020 - Easy Meeting</p>
+                <a href="https://www.linkedin.com/in/egor-kliutsuk/">Egor Kliutsuk</a>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/app.js" asp-append-version="true"></script>
+    <script src="~/js/home.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

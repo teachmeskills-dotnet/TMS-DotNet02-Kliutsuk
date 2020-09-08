@@ -21,19 +21,27 @@ namespace EasyMeeting.WebApp.Controllers
             _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }
 
+        /// <summary>
+        /// View form for registration profile.
+        /// </summary>
+        /// <returns>View form</returns>
         [HttpGet]
         public IActionResult Register()
         {
             return View("~/Views/Account/Register.cshtml");
         }
 
+        /// <summary>
+        /// Form for registration profile.
+        /// </summary>
+        /// <param name="model">Register view model</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = new User { Email = model.Email, UserName = model.Email };
-                // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -44,7 +52,7 @@ namespace EasyMeeting.WebApp.Controllers
                         new { userId = user.Id, code = code },
                         protocol: HttpContext.Request.Scheme);
                     await _emailService.SendEmailAsync(model.Email, "Confirm your account",
-                        $"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>");
+                        $"Confirm your account, by following the link: <a href='{callbackUrl}'>link</a>");
 
                     return RedirectToAction("", "");
                 }
@@ -59,12 +67,21 @@ namespace EasyMeeting.WebApp.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// View form for login in profile.
+        /// </summary>
+        /// <returns>View form</returns>
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
 
+        /// <summary>
+        /// Form for login in profile.
+        /// </summary>
+        /// <param name="model">Login view model</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -75,7 +92,6 @@ namespace EasyMeeting.WebApp.Controllers
                     await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    // проверяем, принадлежит ли URL приложению
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
@@ -93,6 +109,10 @@ namespace EasyMeeting.WebApp.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Logout.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()

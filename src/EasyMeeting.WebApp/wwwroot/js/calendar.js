@@ -5,6 +5,7 @@
     const end = document.getElementById('end').value;
     const address = document.getElementById('address').value;
     const description = document.getElementById('description').value;
+    const email = document.getElementById('email').value;
 
     const calendar = createCalendar({
         options: {
@@ -12,6 +13,7 @@
             id: 'my-id'
         },
         data: {
+            email: email,
             title: title,
             start: new Date(start),
             duration: duration,
@@ -31,5 +33,10 @@ function main() {
     document.getElementById('button').addEventListener('click', click);
 }
 
-
 document.addEventListener('DOMContentLoaded', main);
+
+function copy() {
+    var copyText = document.getElementById("calendar");
+    copyText.select();
+    document.execCommand("copy");
+}

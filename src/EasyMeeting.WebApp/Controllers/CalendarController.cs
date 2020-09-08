@@ -25,7 +25,7 @@ namespace EasyMeeting.WebApp.Controllers
         /// <returns></returns>
         public IActionResult Calendar()
         {
-            return View("~/Views/Calendar/Calendar.cshtml");
+            return View();
         }
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace EasyMeeting.WebApp.Controllers
             {
                 id = e.Id,
                 title = e.Title,
-                startdate = e.StartDate.ToString("yyyy/MM/dd"),
-                enddate = e.EndDate.ToString("yyyy/MM/dd"),
-                email = e.Email,
+                startdate = e.Start.ToString("yyyy/MM/dd"),
+                enddate = e.End.ToString("yyyy/MM/dd"),
+                //email = e.Email,
                 place = e.Place,
                 note = e.Note
 

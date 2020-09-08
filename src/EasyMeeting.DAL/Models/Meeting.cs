@@ -14,12 +14,12 @@ namespace EasyMeeting.DAL.Models
         /// <summary>
         /// Meetings start date.
         /// </summary>
-        public DateTime StartDate { get; set; }
+        public DateTime Start { get; set; }
 
         /// <summary>
         /// Meetings end date.
         /// </summary>
-        public DateTime EndDate { get; set; }
+        public DateTime End { get; set; }
 
         /// <summary>
         /// Meeting place.
@@ -32,14 +32,19 @@ namespace EasyMeeting.DAL.Models
         public string Note { get; set; }
 
         /// <summary>
-        /// Email of participiants.
+        /// Durations.
         /// </summary>
-        public string Email { get; set; }
+        public int Duration { get; set; }
 
         /// <summary>
         /// Title of meeting.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Link for google calendar.
+        /// </summary>
+        public string Link { get; set; }
 
 
         public string UserId { get; set; }

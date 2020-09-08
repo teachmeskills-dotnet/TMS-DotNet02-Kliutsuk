@@ -1,8 +1,12 @@
+using AutoMapper;
+using EasyMeeting.BLL.Automapper;
+using EasyMeeting.BLL.Models;
 using EasyMeeting.BLL.Repository;
 using EasyMeeting.BLL.Services;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
+using EasyMeeting.WebApp.Automapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace EasyMeeting.WebApp
 {
@@ -30,6 +35,9 @@ namespace EasyMeeting.WebApp
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<EasyMeetingDbContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<MeetingService>();
+            services.AddScoped<ParticipiantService>();
+            services.AddAutoMapper(c => { c.AddProfile<MeetingMap>();c.AddProfile<ParticipiantsMap>(); c.AddProfile<AutoMapping>(); }, typeof(Startup));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
 
@@ -49,6 +57,8 @@ namespace EasyMeeting.WebApp
 
             var options = new RewriteOptions().AddRedirect("(.*)/$", "https://www.youtube.com/watch?v=dPWkNS5AMVM&t=578s").AddRedirect("admin.php", "https://www.youtube.com/watch?v=dPWkNS5AMVM&t=578s");
             app.UseRewriter(options);
+
+            app.UseSerilogRequestLogging();
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();

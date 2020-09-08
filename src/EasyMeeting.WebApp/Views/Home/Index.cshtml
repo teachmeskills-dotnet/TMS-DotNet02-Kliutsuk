@@ -2,8 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="main">
-    <h1>Easy Meeting</h1>
-    <div class="links samples">
-         <a asp-controller="Meeting" asp-action="index">meeting</a>
-    </div>
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About the "easy Meeting"</h2>
+            <div class="description">
+                <div class="desc-left">
+                    <h3>Why use this application?</h3>
+                    <p>This application helps you to easily generate a new meeting and automatically send out to all participants.</p>
+                </div>
+                <div class="desc-right">
+                    <h3>Who needs this application?</h3>
+                    <p>HR-Manager, for example, You have scheduled an interview, this application will help you quickly add an event to your Google Calendar and send all participants exactly the same link so that they can add an event to their Google Calendar.</p>
+                </div>
+            </div>
+            <div class="gallery">
+                <img src="~/img/kisspng-portable-network-graphics-vector-graphics-clip-art-who-we-are-meganova-digital-technologies-5d02ba22800b52.3373761415604598105245.jpg" alt="Event photo 1">
+                <img src="~/img/160941-OV9I09-451.-jpg.-pdn.-jpg.jpg" alt="Event photo 2">
+                <img src="~/img/managed-team-in-office-meeting-at-table-top-view_53562-6706.jpg" alt="Event photo 3">
+            </div>
+        </div>
+    </section>
 </div>

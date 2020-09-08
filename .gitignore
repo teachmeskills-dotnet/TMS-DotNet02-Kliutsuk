@@ -351,3 +351,4 @@ MigrationBackup/
 
 #Hidden Files
 /src/EasyMeeting.WebApp/appsettings.json
+src/EasyMeeting.BLL/Constants/EmailConstants.cs
