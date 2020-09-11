@@ -1,5 +1,5 @@
-﻿using EasyMeeting.DAL.Models;
-using Meetings = EasyMeeting.BLL.Models.Meetings;
+﻿using EasyMeeting.BLL.Models;
+using EasyMeeting.DAL.Models;
 using Profile = AutoMapper.Profile;
 
 namespace EasyMeeting.BLL.Automapper
@@ -11,8 +11,8 @@ namespace EasyMeeting.BLL.Automapper
     {
         public MeetingMap()
         {
-            CreateMap<Meetings, Meeting>();
-            CreateMap<Meeting, Meetings>();
+            CreateMap<MeetingsDto, Meeting>();
+            CreateMap<Meeting, MeetingsDto>();
         }
     }
 }

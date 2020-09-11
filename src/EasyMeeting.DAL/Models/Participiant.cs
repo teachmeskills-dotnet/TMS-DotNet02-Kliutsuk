@@ -14,7 +14,6 @@ namespace EasyMeeting.DAL.Models
         /// </summary>
         public string Email { get; set; }
 
-
         public Meeting Meeting { get; set; }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using EasyMeeting.DAL;
-using EasyMeeting.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EasyMeeting.WebApp.Controllers
 {
@@ -14,6 +11,7 @@ namespace EasyMeeting.WebApp.Controllers
     public class CalendarController : Controller
     {
         private readonly EasyMeetingDbContext _db;
+
         public CalendarController(EasyMeetingDbContext db)
         {
             _db = db ?? throw new ArgumentNullException(nameof(db));
@@ -43,7 +41,6 @@ namespace EasyMeeting.WebApp.Controllers
                 //email = e.Email,
                 place = e.Place,
                 note = e.Note
-
             }).ToList();
             return new JsonResult(events);
         }

@@ -1,6 +1,6 @@
 ﻿namespace EasyMeeting.BLL.Constants
 {
-    class EmailConstants
+    internal class EmailConstants
     {
         // https://ethereal.email/create
 
@@ -33,6 +33,5 @@
         /// Passwor email sender.
         /// </summary>
         public const string EMAIL_PASSWORD = "aHR0cHM6Ly9tYWlsLnJ1Lw==";
-
     }
 }

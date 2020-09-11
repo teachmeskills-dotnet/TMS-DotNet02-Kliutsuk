@@ -11,7 +11,9 @@ namespace EasyMeeting.DAL
         }
 
         public DbSet<Meeting> Meetings { get; set; }
+
         public DbSet<Profile> Profiles { get; set; }
+
         public DbSet<Participiant> Participiants { get; set; }
     }
 }

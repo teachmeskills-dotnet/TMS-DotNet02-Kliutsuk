@@ -66,14 +66,15 @@ namespace EasyMeeting.WebApp.Controllers
         {
             var meetings = await _db.Meetings.AsNoTracking().Include(p => p.Participiants).FirstOrDefaultAsync(p => p.Id == id);
             var participiants = meetings.Participiants.ToList();
-            var googleLink = await _db.Meetings.AsNoTracking().FirstOrDefaultAsync(p=>p.Link == link);
+            var googleLink = await _db.Meetings.AsNoTracking().FirstOrDefaultAsync(p => p.Link == link);
 
-            await _emailService.SendEmailAsync(participiants.ToString(),
-                                               "Event for you",
-                                               $"Click on the <a href='{googleLink}'>link</a> and add event in your Google Calendar\n" +
-                                               $"\n" +
-                                               $"\n" +
-                                               $"If you have another questions, please, texted {User.Identity.Name}");
+            await _emailService.SendEmailAsync(
+                participiants.ToString(),
+                "Event for you",
+                $"Click on the <a href='{googleLink}'>link</a> and add event in your Google Calendar\n" +
+                $"\n" +
+                $"\n" +
+                $"If you have another questions, please, texted {User.Identity.Name}");
 
             return Ok();
         }

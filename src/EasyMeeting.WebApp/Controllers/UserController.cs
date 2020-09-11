@@ -12,6 +12,7 @@ namespace EasyMeeting.WebApp.Controllers
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
+
         public UserController(IRepository<User> userRepository)
         {
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));

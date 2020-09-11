@@ -1,6 +1,6 @@
 ﻿namespace EasyMeeting.BLL.Models
 {
-    public class Participiants
+    public class ParticipiantsDto
     {
         /// <summary>
         /// ID Key.

@@ -8,8 +8,8 @@ namespace EasyMeeting.WebApp.Automapping
     {
         public AutoMapping()
         {
-            CreateMap<EventViewModel, Meetings>().ReverseMap();
-            CreateMap<EventViewModel, Participiants>().ReverseMap();
+            CreateMap<EventViewModel, MeetingsDto>().ReverseMap();
+            CreateMap<EventViewModel, ParticipiantsDto>().ReverseMap();
         }
     }
 }

@@ -11,8 +11,8 @@ namespace EasyMeeting.BLL.Automapper
     {
         public ParticipiantsMap()
         {
-            CreateMap<Participiants, Participiant>();
-            CreateMap<Participiant, Participiants>();
+            CreateMap<ParticipiantsDto, Participiant>();
+            CreateMap<Participiant, ParticipiantsDto>();
         }
     }
 }

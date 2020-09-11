@@ -2,8 +2,8 @@
 using EasyMeeting.BLL.Models;
 using EasyMeeting.Common.Interfaces;
 using EasyMeeting.DAL.Models;
-using System.Threading.Tasks;
 using System;
+using System.Threading.Tasks;
 
 namespace EasyMeeting.BLL.Services
 {
@@ -28,7 +28,7 @@ namespace EasyMeeting.BLL.Services
         /// </summary>
         /// <param name="meeting"></param>
         /// <returns></returns>
-        public async Task AddMeetingAsync(Meetings meetings, string userId)
+        public async Task AddMeetingAsync(MeetingsDto meetings, string userId)
         {
             var dataMeeting = _mapper.Map<Meeting>(meetings);
             dataMeeting.UserId = userId;

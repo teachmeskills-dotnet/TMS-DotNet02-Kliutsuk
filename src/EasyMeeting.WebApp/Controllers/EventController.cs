@@ -6,10 +6,8 @@ using EasyMeeting.DAL;
 using EasyMeeting.DAL.Models;
 using EasyMeeting.WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,18 +64,19 @@ namespace EasyMeeting.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 var userId = User.Claims.FirstOrDefault(claim => claim.Type.Contains("nameidentifier")).Value;
-                var meeting = _mapper.Map<Meetings>(model);
-                var participiant = _mapper.Map<Participiants>(model);
+                var meeting = _mapper.Map<MeetingsDto>(model);
+                var participiant = _mapper.Map<ParticipiantsDto>(model);
                 string[] emails = model.Emails.Split(", ");
                 await _participiantService.AddParticipiantsAsync(participiant);
                 await _meetingService.AddMeetingAsync(meeting, userId);
 
                 foreach (var item in emails)
                 {
-                    await _emailService.SendEmailAsync(item,
-                    "Event for you",
-                    $"Click on the <a href='{model.Link}'>link</a> and add event in your Google Calendar\n\n\n" +
-                    $"If you have another questions, please, texted {User.Identity.Name}"); ;
+                    await _emailService.SendEmailAsync(
+                        item,
+                        "Event for you",
+                        $"Click on the <a href='{model.Link}'>link</a> and add event in your Google Calendar\n\n\n" +
+                        $"If you have another questions, please, texted {User.Identity.Name}");
                 }
 
                 return View();
@@ -93,20 +92,20 @@ namespace EasyMeeting.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SendEmail([FromBody] string link)
         {
-            
             var meetings = await _db.Meetings.AsNoTracking().Include(p => p.Participiants).FirstOrDefaultAsync();
-                //.FirstOrDefaultAsync(p => p.Id == id);
-            var participiants = meetings.Participiants.Select(x=>x.Email).ToList();
+            //.FirstOrDefaultAsync(p => p.Id == id);
+            var participiants = meetings.Participiants.Select(x => x.Email).ToList();
             var googleLink = await _db.Meetings.AsNoTracking().FirstOrDefaultAsync(p => p.Link == link);
             //var emails = participiants.Select(p => p.Email).ToString();
             foreach (var item in participiants)
             {
-                await _emailService.SendEmailAsync(item,
-                                                   "Event for you",
-                                                   $"Click on the <a href='{googleLink}'>link</a> and add event in your Google Calendar\n" +
-                                                   $"\n" +
-                                                   $"\n" +
-                                                   $"If you have another questions, please, texted {User.Identity.Name}"); ;
+                await _emailService.SendEmailAsync(
+                    item,
+                    "Event for you",
+                    $"Click on the <a href='{googleLink}'>link</a> and add event in your Google Calendar\n" +
+                    $"\n" +
+                    $"\n" +
+                    $"If you have another questions, please, texted {User.Identity.Name}");
             }
             return Ok();
         }

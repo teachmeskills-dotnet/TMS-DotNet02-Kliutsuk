@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace EasyMeeting.BLL.Models
 {
-    public class Meetings
+    public class MeetingsDto
     {
         /// <summary>
         /// ID Key.

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using EasyMeeting.Common.Interfaces;
+using System;
 using System.Collections.Generic;
-using EasyMeeting.Common.Interfaces;
 
 namespace EasyMeeting.DAL.Models
 {
@@ -45,7 +45,6 @@ namespace EasyMeeting.DAL.Models
         /// Link for google calendar.
         /// </summary>
         public string Link { get; set; }
-
 
         public string UserId { get; set; }
         public ICollection<Participiant> Participiants { get; set; }

@@ -21,14 +21,14 @@ a {
     -moz-transition: all 0.4s;
 }
 
-a:focus {
-    outline: none !important;
-}
+    a:focus {
+        outline: none !important;
+    }
 
-a:hover {
-    text-decoration: none;
-    color: #fff;
-}
+    a:hover {
+        text-decoration: none;
+        color: #fff;
+    }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0px;
@@ -57,41 +57,41 @@ textarea {
     border: none;
 }
 
-textarea:focus, input:focus {
-    border-color: transparent !important;
-}
+    textarea:focus, input:focus {
+        border-color: transparent !important;
+    }
 
-input:focus::-webkit-input-placeholder {
-    color: transparent;
-}
+        input:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
 
-input:focus:-moz-placeholder {
-    color: transparent;
-}
+        input:focus:-moz-placeholder {
+            color: transparent;
+        }
 
-input:focus::-moz-placeholder {
-    color: transparent;
-}
+        input:focus::-moz-placeholder {
+            color: transparent;
+        }
 
-input:focus:-ms-input-placeholder {
-    color: transparent;
-}
+        input:focus:-ms-input-placeholder {
+            color: transparent;
+        }
 
-textarea:focus::-webkit-input-placeholder {
-    color: transparent;
-}
+        textarea:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
 
-textarea:focus:-moz-placeholder {
-    color: transparent;
-}
+        textarea:focus:-moz-placeholder {
+            color: transparent;
+        }
 
-textarea:focus::-moz-placeholder {
-    color: transparent;
-}
+        textarea:focus::-moz-placeholder {
+            color: transparent;
+        }
 
-textarea:focus:-ms-input-placeholder {
-    color: transparent;
-}
+        textarea:focus:-ms-input-placeholder {
+            color: transparent;
+        }
 
 input::-webkit-input-placeholder {
     color: #fff;
@@ -136,9 +136,9 @@ button {
     background: transparent;
 }
 
-button:hover {
-    cursor: pointer;
-}
+    button:hover {
+        cursor: pointer;
+    }
 
 iframe {
     border: none !important;
@@ -168,17 +168,17 @@ iframe {
     z-index: 1;
 }
 
-.container-login100::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(255,255,255,0.9);
-}
+    .container-login100::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255,255,255,0.9);
+    }
 
 .wrap-login100 {
     width: 500px;
@@ -209,11 +209,11 @@ iframe {
     margin: 0 auto;
 }
 
-.login100-form-logo img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-}
+    .login100-form-logo img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
 
 .login100-form-title {
     font-family: 'Piedra', cursive;
@@ -256,50 +256,50 @@ iframe {
     pointer-events: none;
 }
 
-.focus-input100::before {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-    background: #fff;
-}
+    .focus-input100::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+        background: #fff;
+    }
 
-.focus-input100::after {
-    font-family: Material-Design-Iconic-Font;
-    font-size: 22px;
-    color: #fff;
-    content: attr(data-placeholder);
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 6px;
-    left: 0px;
-    padding-left: 5px;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-}
+    .focus-input100::after {
+        font-family: Material-Design-Iconic-Font;
+        font-size: 22px;
+        color: #fff;
+        content: attr(data-placeholder);
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 6px;
+        left: 0px;
+        padding-left: 5px;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
 
 .input100:focus {
     padding-left: 5px;
 }
 
-.input100:focus + .focus-input100::after {
-    top: -22px;
-    font-size: 18px;
-}
+    .input100:focus + .focus-input100::after {
+        top: -22px;
+        font-size: 18px;
+    }
 
-.input100:focus + .focus-input100::before {
-    width: 100%;
-}
+    .input100:focus + .focus-input100::before {
+        width: 100%;
+    }
 
 .container-login100-form-btn {
     width: 100%;

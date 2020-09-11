@@ -2,7 +2,6 @@
 //    var calendarEl = document.getElementById('calendar');
 
 //    var calendar = new FullCalendar.Calendar(calendarEl, {
-
 //        aspectRatio: 2.2,
 //        initialView: 'dayGridMonth',
 //        timeZone: 'local',

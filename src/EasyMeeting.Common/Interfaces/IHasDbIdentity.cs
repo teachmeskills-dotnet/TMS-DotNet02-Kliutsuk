@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EasyMeeting.Common.Interfaces
+﻿namespace EasyMeeting.Common.Interfaces
 {
     public interface IHasDbIdentity
     {

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\image\**" />
+    <Content Remove="wwwroot\image\**" />
+    <EmbeddedResource Remove="wwwroot\image\**" />
+    <None Remove="wwwroot\image\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.6" />
@@ -23,7 +30,6 @@
   <ItemGroup>
     <Folder Include="Views\Home\" />
     <Folder Include="wwwroot\fullcalendarIo\" />
-    <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
 
