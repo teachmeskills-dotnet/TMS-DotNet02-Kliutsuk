@@ -7,15 +7,13 @@ The main idea of ​​the application is to quickly create new appointments and
 ## Built with
 
 - [ASP.NET Core 3.1](https://docs.microsoft.com/en-us/aspnet/core/)
-- [Docker](https://www.docker.com/)
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) for [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 - [Automapper](https://automapper.org/)
-- Logging with [Serilog](https://serilog.net/)
 - [MailKit](https://github.com/jstedfast/MailKit)
 
 ## Author
 
-[Egor Kliutsuk](https://aslamovyura.github.io/) - Software Developer, Student
+[Egor Kliutsuk](https://www.linkedin.com/in/egor-kliutsuk/) - Software Developer, Student
 
 ## License
 
